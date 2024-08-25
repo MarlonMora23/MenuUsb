@@ -1,0 +1,81 @@
+<head>
+	{# Cargamos la librería #}
+	{% load bootstrap4 %}
+
+	{# CSS Bootstrap #}
+	{% bootstrap_css %}
+</head>
+
+
+<!-- Langin Page-->
+
+<div class="text-center d-flex justify-content-center align-items-center bg-image" style="
+	background-image: url('https://th.bing.com/th/id/R.a0ae9b2665d4e87eb3d01a7c14011997?rik=evQwHe17W5ux4w&pid=ImgRaw&r=0');
+	height: 100vh;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat; ">
+	<div style="background-color: rgba(0, 0, 0, 0.85); width: 100%; height:100%;">
+
+		<Header style="width: 100%;position: fixed;">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<div style="display: flex; align-items:center; justify-content:space-between; width: 1260px; margin: 0 auto;">
+					<a class="navbar-brand px-3" href="{% url 'index' %}">
+						<img src="https://i.ibb.co/bsk2zTg/Menu-Usb-2.png" alt="Logo" style="max-width: 80px;">
+					</a>
+					<div class="" id="navbarNavAltMarkup">
+
+						<div class="navbar-nav ml-auto">
+							<a class="btn btn-outline-light btn-orange-hover btn-lg" style="font-size: medium;"
+								href="{% url 'catalogo' %}">Ingresar</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</Header>
+
+		<main class="text-white"
+			style="height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center;">
+			<div style="margin: 0 auto; max-width: 1200px; padding: 4rem;">
+				<!-- <img src="https://i.ibb.co/bsk2zTg/Menu-Usb-2.png" alt="Logo MenuUSB" style="width: 230px;"> -->
+				<div>
+					<h2 class="mb-4 mt-4 mx-5" style="font-size: 3rem; text-wrap:pretty; font-weight: bold;">
+						Encuentra el <span class="text-orange">menú</span> que buscas <br>en un solo lugar
+					</h2>
+					<h4 style="text-wrap: pretty; font-weight: 300;">En MenuUsb puedes encontrar todos los menús de las tiendas <br>
+						de la Universidad de San Buenaventura en un solo lugar</h4>
+					<div class="d-flex flex-column justify-content-center align-items-center pt-5">
+						<a class="btn btn-outline-light btn-orange-hover btn-lg" style="font-size: 1.5rem;" href="{% url 'catalogo' %}">Ingresar como
+							Usuario</a>
+						<a class="btn btn-link text-white" href="{% url 'login' %}">Ingresar como Administrador</a>
+					</div>
+				</div>
+			</div>
+		</main>
+
+	</div>
+</div>
+<!-- Langin Page-->
+
+<style>
+	.text-orange {
+		color: #fd7e14;
+	}
+
+	.btn-orange-hover {
+		background-color: #fd7e14;
+		color: white;
+		transition: transform 0.3s ease;
+	}
+
+	.btn-orange-hover:hover {
+		background-color: #f17611;
+		transform: scale(1.1);
+		color: white
+	}
+
+	.bold {
+		font-weight: 800;
+	}
+</style>

@@ -1,0 +1,157 @@
+<head>
+    <!-- Bootstrap CSS -->
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% load static %}
+    
+    <!-- CSS Styles -->
+    <style>
+        
+        .card {
+            transition: all 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #d6d6d655; /* Color de fondo claro para cada tarjeta */
+            margin-bottom: 20px; /* Espacio entre tarjetas */
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .card-img-top {
+            object-fit: cover;
+            height: 200px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #454648; /* Línea de separación en el título */
+            padding-bottom: 10px; /* Espaciado inferior para el título */
+            margin-bottom: 20px; /* Espaciado inferior para el título */
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: #000000;
+        }
+
+        .btn-primary {
+            background-color: #ef6c00;
+            border-color: #ef6c00;
+        }
+
+        .btn-primary:hover {
+            background-color: #6d7c8d;
+            border-color: #6d7c8d;
+        }
+		
+        .container {
+            /*background-image: ffffff7c url('https://static.vecteezy.com/system/resources/previews/002/834/627/non_2x/light-orange-template-with-rectangles-rectangles-with-colorful-gradient-on-abstract-background-pattern-for-websites-landing-pages-vector.jpg');*/
+            background-color: #ffffffce; /* Color de fondo para el contenedor principal
+            /* background-color: #000000; Color de fondo para el contenedor principal */
+            /* opacity: 0.2; */
+            padding: 20px; /* Espaciado interno para el contenedor principal */
+            border-radius: 10px; /* Borde redondeado para el contenedor principal */
+            margin-top: 20px; /* Espaciado superior para el contenedor principal */
+            box-shadow: 0 4px 8px rgba(0, 0, 0,0.2); /* Sombra para el contenedor principal */
+        }
+		/* Estilo para la línea de separación del título */
+        .catalog-title-line {
+            border-bottom: 2px solid #ef6c00; /* Cambia el color de la línea de separación */
+            margin-bottom: 20px; /* Espaciado inferior para la línea de separación */
+
+    }	
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+        <Header>
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffe5d0">
+                <a class="navbar-brand px-3" href="home">
+                    <img src="https://i.ibb.co/bsk2zTg/Menu-Usb-2.png" alt="Logo" style="max-width: 60px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <!-- <a class="nav-item nav-link px-3" href="{% url 'stores' %}">Tiendas</a> -->
+                        <a class="nav-item nav-link active px-3" href="catalogo">Productos<span
+                                class="sr-only">(current)</span></a>
+                    </div>
+                    
+                </div>
+            </nav>
+        </Header>
+
+    <div class="container mt-5 mb-5">
+        <h1 class="my-5 text-center catalog-title-line" style="font-family: 'Roboto', sans-serif;">Catálogo de Productos</h1>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'uploads/'%}{{product.img}}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text  mb-2">Precio: ${{ product.price }}</p>
+                        <p class="card-text mb-2">Tienda: {{ product.store }}</p>
+                        <p class="card-text mb-4">Stock: {{ product.stock }}</p>
+                        <a href="#" class="btn btn-primary btn-sm btn-block">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer
+		class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-orange mt-auto">
+		<!-- Copyright -->
+		<div class="text-white mb-3 mb-md-0">
+			Copyright © 2024. Laboratorio de software III
+		</div>
+		<!-- Copyright -->
+
+		<!-- Right -->
+		<div>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-facebook-f"></i>
+			</a>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-twitter"></i>
+			</a>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-google"></i>
+			</a>
+			<a href="#!" class="text-white">
+				<i class="fab fa-linkedin-in"></i>
+			</a>
+		</div>
+		<!-- Right -->
+	</footer>
+</body>
+
+</html>
+
+<style>
+	.bg-orange {
+		background-color: #fd7e14;
+	}
+
+	.btn-orange-hover {
+		background-color: #fd7e14;
+		color: white;
+		transition: transform 0.3s ease;
+	}
+
+	.btn-orange-hover:hover {
+		background-color: #f17611;
+		/* transform: scale(1.1); */
+		color: white
+	}
+</style>

@@ -1,0 +1,142 @@
+<head>
+
+	{# Cargamos la librería #}
+	{% load bootstrap4 %}
+
+	{# CSS Bootstrap #}
+	{% bootstrap_css %}
+
+	{# Widget Tweaks #}
+	{% load widget_tweaks %}
+
+	{# Archivos #}
+	{% load static %} <!-- STATIC_URL -->
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+	<Header>
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffe5d0">
+			<a class="navbar-brand px-3" href="{% url 'stores' %}">
+				<img src="https://i.ibb.co/bsk2zTg/Menu-Usb-2.png" alt="Logo" style="max-width: 60px;">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-item nav-link active px-3" href="{% url 'stores' %}">Tiendas <span
+							class="sr-only">(current)</span></a>
+					<a class="nav-item nav-link px-3" href="{% url 'products' %}">Productos</a>
+				</div>
+				<div class="navbar-nav ml-auto">
+					<a class="nav-item nav-link px-3" href="{% url 'index' %}">Cerrar Sesión</a>
+				</div>
+			</div>
+		</nav>
+	</Header>
+
+	<div class="d-flex justify-content-center align-items-center mt-5">
+		<span style="font-weight: 500; font-size: 1.5rem;">Actualizar Tienda</span>
+	</div>
+
+	<div class="container align-items-center mt-5">
+
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			<!-- {{ form.as_p }} -->
+			<div class="form-group">
+				<label for="id_store" class="txt_naranja">id_store</label>
+				{{ form.id_store|add_class:"form-control" }}
+				<!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+			</div>
+			<div class="form-group">
+				<label for="name" class="txt_naranja">Nombre</label>
+				{{ form.name|add_class:"form-control" }}
+			</div>
+			<div class="form-group">
+				<label for="location" class="txt_naranja">Ubicacion</label>
+				{{ form.location|add_class:"form-control" }}
+			</div>
+			<div class="form-group">
+				<label for="img" class="txt_naranja">Imagen</label>
+				{{ form.img|add_class:"form-control mb-3" }}
+				<p class="txt_naranja">Imagen Actual:</p>
+				<img src="{% static 'uploads/'%}{{object.img}}" class="img-fluid" alt="{{object.id_store}}">
+			</div>
+			<div class="form-group">
+				<label for="description" class="txt_naranja">Descripcion</label>
+				{{ form.description|add_class:"form-control" }}
+			</div>
+			<div class="form-group">
+				<label for="admin" class="txt_naranja">Administrador</label>
+				{{ form.admin|add_class:"form-control" }}
+				<!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+			</div>
+			<div class="container d-flex justify-content-between mb-5">
+				<a href="../" type="submit" class="btn btn-primary btn-blue-hover mt-4">Volver</a>
+				<button type="submit" class="btn btn-primary btn-orange-hover mx-auto mt-4"
+					style="width: 300px;">Guardar</button>
+			</div>
+		</form>
+	</div>
+
+
+	<footer
+		class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-orange mt-auto">
+		<!-- Copyright -->
+		<div class="text-white mb-3 mb-md-0">
+			Copyright © 2024. Laboratorio de software III
+		</div>
+		<!-- Copyright -->
+
+		<!-- Right -->
+		<div>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-facebook-f"></i>
+			</a>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-twitter"></i>
+			</a>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-google"></i>
+			</a>
+			<a href="#!" class="text-white">
+				<i class="fab fa-linkedin-in"></i>
+			</a>
+		</div>
+		<!-- Right -->
+	</footer>
+
+
+	<!-- Al final del body -->
+	{# JS y jQuery Bootstrap #}
+	{% bootstrap_javascript jquery='full' %}
+</body>
+
+<style>
+	.btn-blue-hover {
+		background-color: #0586ff;
+	}
+
+	.btn-blue-hover:hover {
+		background-color: #3ea2ff;
+	}
+
+	.bg-orange {
+		background-color: #fd7e14;
+	}
+
+	.btn-orange-hover {
+		background-color: #fd7e14;
+		color: white;
+		transition: transform 0.3s ease;
+	}
+
+	.btn-orange-hover:hover {
+		background-color: #f17611;
+		color: white
+	}
+</style>

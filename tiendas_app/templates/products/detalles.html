@@ -1,0 +1,125 @@
+<head>
+
+	{# Cargamos la librería #}
+	{% load bootstrap4 %}
+
+	{# CSS Bootstrap #}
+	{% bootstrap_css %} </head>
+
+{# Widget Tweaks #}
+{% load widget_tweaks %}
+
+{# Archivos #}
+{% load static %} <!-- STATIC_URL -->
+
+</head>
+
+
+<body class="d-flex flex-column min-vh-100">
+	<Header>
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffe5d0">
+			<a class="navbar-brand px-3" href="{% url 'stores' %}">
+				<img src="https://i.ibb.co/bsk2zTg/Menu-Usb-2.png" alt="Logo" style="max-width: 60px;">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-item nav-link px-3" href="{% url 'stores' %}">Tiendas </a>
+					<a class="nav-item nav-link active px-3" href="{% url 'products' %}">Productos <span
+							class="sr-only">(current)</span></a>
+				</div>
+				<div class="navbar-nav ml-auto">
+					<a class="nav-item nav-link px-3" href="{% url 'index' %}">Cerrar Sesión</a>
+				</div>
+			</div>
+		</nav>
+	</Header>
+
+	<div class="d-flex justify-content-center align-items-center mt-5">
+		<span style="font-weight: 500; font-size: 1.5rem;">Detalles Producto</span>
+	</div>
+
+	<section class="container d-flex justify-content-center align-items-center flex-column mt-3">
+		<div class="card  center" style="width: 400px; margin: auto auto;">
+			<img class="card-img-top" src="{% static 'uploads/'%}{{object.img}}" style="height: 200px; object-fit: cover;" alt="{{object.name}}">
+			<div class="card-body">
+
+				<p><span class="txt_negrita" style="font-weight: bold;">Nombre:</span> <br> {{object.name}}</p>
+				<p><span class="txt_negrita" style="font-weight: bold;">Precio:</span> <br> {{object.price}}</p>
+				<p><span class="txt_negrita" style="font-weight: bold;">Stock:</span> <br> {{object.stock}}</p>
+				<p><span class="txt_negrita" style="font-weight: bold;">Tienda:</span> <br> {{object.store}}</p>
+			</div>
+			<div class="card-footer">
+				<small class="text-muted">Creado:</small><br> {{object.created_at}}</p>
+				<small class="text-muted">Actualizado:</small> <br> {{object.updated_at}}</p>
+			</div>
+		</div>
+
+		<div class="d-flex flex-row justify-content-between mb-5" style="width: 400px;">
+			<a href="{% url 'products' %}" type="button" class="btn btn-primary btn-blue-hover mt-4"
+				style="width: 180px;">Volver</a>
+			<a href="{% url 'stores' %}" type="button" class="btn btn-primary btn-orange-hover mt-4"
+				style="width: 180px;">Ver Tiendas</a>
+		</div>
+	</section>
+
+	<footer
+		class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-orange mt-auto">
+		<!-- Copyright -->
+		<div class="text-white mb-3 mb-md-0">
+			Copyright © 2024. Laboratorio de software III
+		</div>
+		<!-- Copyright -->
+
+		<!-- Right -->
+		<div>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-facebook-f"></i>
+			</a>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-twitter"></i>
+			</a>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-google"></i>
+			</a>
+			<a href="#!" class="text-white">
+				<i class="fab fa-linkedin-in"></i>
+			</a>
+		</div>
+		<!-- Right -->
+	</footer>
+
+
+
+	<!-- Al final del body -->
+	{# JS y jQuery Bootstrap #}
+	{% bootstrap_javascript jquery='full' %}
+</body>
+
+<style>
+	.btn-blue-hover {
+		background-color: #0586ff;
+	}
+
+	.btn-blue-hover:hover {
+		background-color: #3ea2ff;
+	}
+
+	.bg-orange {
+		background-color: #fd7e14;
+	}
+
+	.btn-orange-hover {
+		background-color: #fd7e14;
+		color: white;
+		transition: transform 0.3s ease;
+	}
+
+	.btn-orange-hover:hover {
+		background-color: #f17611;
+		color: white
+	}
+</style>
